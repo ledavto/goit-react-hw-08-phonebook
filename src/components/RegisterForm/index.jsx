@@ -33,36 +33,51 @@ export const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          Name
-        </label>
-        <input
-          type="text"
-          name="name"
-          required
-          className="form-control"
-          id="exampleFormControlInput1"
-          onChange={handleChange}
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          Telephone
-        </label>
-        <input
-          type="tel"
-          name="number"
-          required
-          className="form-control"
-          id="exampleFormControlInput2"
-          // onChange={handleChange}
-        />
-      </div>
+      <div className="container w-25 mx-auto">
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            required
+            className="form-control"
+            id="exampleFormControlInput1"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
+            Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            required
+            className="form-control"
+            id="exampleFormControlInput1"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            required
+            className="form-control"
+            id="exampleFormControlInput2"
+            // onChange={handleChange}
+          />
+        </div>
 
-      <button className="btn btn-primary" type="submit">
-        Add contact
-      </button>
+        <button className="btn btn-primary" type="submit">
+          Register
+        </button>
+      </div>
     </form>
   );
 };
