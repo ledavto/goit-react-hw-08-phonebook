@@ -36,6 +36,7 @@ export const App = () => {
         <Route index path="/" element={<SignupForm />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/contacts" element={<ContactList />} />
         <Route path="*" element={<p>Not found</p>}></Route>
       </Route>
     </Routes>

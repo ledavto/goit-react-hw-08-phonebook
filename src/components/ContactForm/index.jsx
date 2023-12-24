@@ -19,7 +19,7 @@ export const ContactForm = () => {
 
     const newCont = {
       name: e.target.name.value,
-      phone: e.target.number.value,
+      number: e.target.number.value,
     };
 
     if (newCont.name) {

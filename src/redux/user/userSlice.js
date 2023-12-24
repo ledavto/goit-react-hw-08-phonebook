@@ -11,6 +11,7 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
+  // console.log('state', state)
   state.contacts.isLoading = false;
   state.contacts.error = action.payload;
 };
@@ -24,6 +25,7 @@ const userSlice = createSlice({
       //Запит списку
       .addCase(fetchContacts.pending, handlePending)
       .addCase(fetchContacts.fulfilled, (state, action) => {
+        
         state.contacts.isLoading = false;
         state.contacts.error = null;
         state.contacts.items = action.payload;
@@ -50,21 +52,7 @@ const userSlice = createSlice({
         state.contacts.items.push(action.payload);
       })
       .addCase(addContact.rejected, handleRejected);
-  },
-  // reducers: {
-  //     fetchingInProgress(state) {
-  //       state.contacts.isLoading = true;
-  //     },
-  //     fetchingSuccess(state, action) {
-  //       state.contacts.isLoading = false;
-  //       state.contacts.error = null;
-  //       state.contacts.items = action.payload;
-  //     },
-  //     fetchingError(state, action) {
-  //       state.contacts.isLoading = false;
-  //       state.contacts.error = action.payload;
-  //     },
-  //   },
+  }
 });
 
 export const userReducer = userSlice.reducer;

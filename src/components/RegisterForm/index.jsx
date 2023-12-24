@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { fetchRegister } from '../../redux/auth/auth-operations';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  // const listCont = useSelector(state => state.user.contacts.items);
+  const authData = useSelector(state => state.auth.token);
+  console.log('authData', authData);
 
   // Викликаємо операцію
   // useEffect(() => {
@@ -14,6 +16,13 @@ export const RegisterForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
+    const dataRegister = {
+      email: form.email.value,
+      name: form.name.value,
+      password: form.password.value,
+    };
+
+    dispatch(fetchRegister(dataRegister));
 
     form.reset();
   };
@@ -48,7 +57,7 @@ export const RegisterForm = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
+          <label htmlFor="exampleFormControlInput2" className="form-label">
             Name
           </label>
           <input
@@ -56,12 +65,12 @@ export const RegisterForm = () => {
             name="name"
             required
             className="form-control"
-            id="exampleFormControlInput1"
+            id="exampleFormControlInput2"
             onChange={handleChange}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
+          <label htmlFor="exampleFormControlInput3" className="form-label">
             Password
           </label>
           <input
@@ -69,7 +78,7 @@ export const RegisterForm = () => {
             name="password"
             required
             className="form-control"
-            id="exampleFormControlInput2"
+            id="exampleFormControlInput3"
             // onChange={handleChange}
           />
         </div>

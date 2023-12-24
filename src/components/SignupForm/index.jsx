@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, fetchContacts } from '../../redux/operations';
 import { useEffect } from 'react';
-// import { addUserAction } from '../../redux/user/userSlice';
+import { fetchLogin } from '../../redux/auth/auth-operations';
 
 export const SignupForm = () => {
   const dispatch = useDispatch();
@@ -16,8 +15,13 @@ export const SignupForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
+    const dataLogin = {
+      email: form.email.value,
+      password: form.password.value,
+    };
 
-    // dispatch(addContact(newCont));
+    dispatch(fetchLogin(dataLogin));
+
     form.reset();
   };
 
