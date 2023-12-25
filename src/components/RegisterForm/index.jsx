@@ -1,17 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchRegister } from '../../redux/auth/auth-operations';
+import { useNavigate } from 'react-router-dom';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  const authData = useSelector(state => state.auth.token);
-  console.log('authData', authData);
+  // const authData = useSelector(state => state.auth.token);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const navigate = useNavigate();
 
-  // Викликаємо операцію
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  //Если залогинен то переходим на Home page
+  useEffect(() => {
+    isLoggedIn && navigate('/');
+  }, [isLoggedIn, navigate]);
 
   const handleSubmit = e => {
     e.preventDefault();
