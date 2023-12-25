@@ -8,18 +8,20 @@ import { SignupForm } from './SignupForm';
 import { RegisterForm } from './RegisterForm';
 import { Layout } from './Layout';
 import { Route, Routes } from 'react-router-dom';
+import { fetchCurrentUser } from '../redux/auth/auth-operations';
+import Home from 'page/Home';
 
 //rafce
 
 export const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const listCont = useSelector(state => state.user.contacts.items);
   // const isLoading = useSelector(state => state.user.contacts.isLoading);
   // const error = useSelector(state => state.user.contacts.error);
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     // <div className="container">
@@ -33,7 +35,7 @@ export const App = () => {
 
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index path="/" element={<SignupForm />} />
+        <Route index path="/" element={<Home />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/contacts" element={<ContactList />} />

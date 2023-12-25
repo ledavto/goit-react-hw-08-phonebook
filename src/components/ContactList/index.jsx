@@ -24,7 +24,7 @@ export const ContactList = () => {
   };
 
   return (
-    <>
+    <div className="container w-75 mx-auto">
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
@@ -52,6 +52,6 @@ export const ContactList = () => {
             </li>
           ))}
       </ul>
-    </>
+    </div>
   );
 };
