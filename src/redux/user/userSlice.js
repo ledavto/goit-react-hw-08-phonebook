@@ -1,10 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
-import {
-  addContact,
-  deleteContact,
-  fetchContacts,
-} from '../../redux/operations';
+import { addContact, deleteContact, fetchContacts } from './user-operations';
 
 const handlePending = state => {
   state.contacts.isLoading = true;
@@ -25,7 +21,6 @@ const userSlice = createSlice({
       //Запит списку
       .addCase(fetchContacts.pending, handlePending)
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        
         state.contacts.isLoading = false;
         state.contacts.error = null;
         state.contacts.items = action.payload;
@@ -52,7 +47,7 @@ const userSlice = createSlice({
         state.contacts.items.push(action.payload);
       })
       .addCase(addContact.rejected, handleRejected);
-  }
+  },
 });
 
 export const userReducer = userSlice.reducer;

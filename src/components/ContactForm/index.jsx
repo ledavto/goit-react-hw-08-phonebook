@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, fetchContacts } from '../../redux/operations';
+import { addContact, fetchContacts } from '../../redux/user/user-operations';
 import { useEffect } from 'react';
 // import { addUserAction } from '../../redux/user/userSlice';
 
