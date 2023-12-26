@@ -3,11 +3,6 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-// const token = {
-//   set(token) { axios.defaults.common.Authorization = `Bearer ${token}` },
-//   unset() {axios.defaults.common.Authorization=``}
-// }
-
 //Регистрация клиента
 export const fetchRegister = createAsyncThunk(
   'auth/register',

@@ -4,10 +4,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
-    try {
+    try {      
       const response = await axios.get('/contacts');
-      console.log(response);
       axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
+      // console.log(response);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -20,12 +20,14 @@ export const addContact = createAsyncThunk(
   async (newContObj, thunkAPI) => {
     try {
       const response = await axios.post('/contacts', newContObj);
+      axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
+
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
@@ -37,4 +39,4 @@ export const deleteContact = createAsyncThunk(
       return thunkAPI.rejectWithValue(e.message);
     }
   }
-);
+)

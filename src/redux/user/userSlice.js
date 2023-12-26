@@ -37,17 +37,7 @@ const userSlice = createSlice({
         );
         state.contacts.items.splice(index, 1);
       })
-      .addCase(deleteContact.rejected, handleRejected)
-
-      //Додавання
-      .addCase(addContact.pending, handlePending)
-      .addCase(addContact.fulfilled, (state, action) => {
-        state.contacts.isLoading = false;
-        state.contacts.error = null;
-        state.contacts.items.push(action.payload);
-      })
-      .addCase(addContact.rejected, handleRejected);
-  },
+      .addCase(deleteContact.rejected, handleRejected)}
 });
 
 export const userReducer = userSlice.reducer;
