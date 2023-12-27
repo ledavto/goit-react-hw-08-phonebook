@@ -9,9 +9,10 @@ export const ContactForm = () => {
   const listCont = useSelector(state => state.user.contacts.items);
 
   // Викликаємо операцію
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  //   console.log('1 step');
+  // }, [dispatch]);
 
   const handleSubmit = e => {
     e.preventDefault();

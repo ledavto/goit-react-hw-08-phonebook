@@ -10,6 +10,7 @@ export const fetchRegister = createAsyncThunk(
     try {
       const response = await axios.post('/users/signup', credentials);
       // token(set(response.data.token))
+      console.log('REG POST', response.data.token);
       axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
       return response.data;
     } catch (error) {
@@ -23,9 +24,9 @@ export const fetchLogin = createAsyncThunk('auth/login', async credentials => {
   try {
     const response = await axios.post('/users/login', credentials);
     // token(set(response.data.token))
+    console.log('LOGIN POST', response.data.token);
     axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
     return response.data;
-    // console.log('response=>> ', response.data)
   } catch (error) {
     // return thunkAPI.rejectWithValue(error.message);
   }
