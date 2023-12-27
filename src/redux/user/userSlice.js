@@ -7,7 +7,6 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
-  // console.log('state', state)
   state.contacts.isLoading = false;
   state.contacts.error = action.payload;
 };
@@ -27,6 +26,15 @@ const userSlice = createSlice({
       })
       .addCase(fetchContacts.rejected, handleRejected)
 
+      //Додавання
+      .addCase(addContact.pending, handlePending)
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.contacts.isLoading = false;
+        state.contacts.error = null;
+        state.contacts.items.push(action.payload);
+      })
+      .addCase(addContact.rejected, handleRejected)
+
       //Видалення
       .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, action) => {
@@ -37,7 +45,8 @@ const userSlice = createSlice({
         );
         state.contacts.items.splice(index, 1);
       })
-      .addCase(deleteContact.rejected, handleRejected)}
+      .addCase(deleteContact.rejected, handleRejected);
+  },
 });
 
 export const userReducer = userSlice.reducer;

@@ -1,4 +1,3 @@
-import { ContactList } from './ContactList';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { SignupForm } from './SignupForm';
@@ -7,8 +6,9 @@ import { Layout } from './Layout';
 import { Route, Routes } from 'react-router-dom';
 import { fetchCurrentUser } from '../redux/auth/auth-operations';
 import Home from 'page/Home';
-import { RestrictedRoute } from './UserMenu/RestrictedRoute';
-import { PrivateRoute } from './UserMenu/PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+import ContactPage from 'page/Contacts';
 
 //rafce
 
@@ -47,7 +47,7 @@ export const App = () => {
         <Route
           path="/contacts"
           element={
-            <PrivateRoute redirectTo="/signup" component={<ContactList />} />
+            <PrivateRoute redirectTo="/signup" component={<ContactPage />} />
           }
         />
         <Route path="*" element={<p>Not found</p>}></Route>

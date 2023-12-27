@@ -10,13 +10,14 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
-  isRefreshing: false
+  isRefreshing: false,
 };
 
-const handlePending = state => {
-};
+const handlePending = state => {};
 
-const handleRejected = (state, action) => {state.isRefreshing = false};
+const handleRejected = (state, action) => {
+  state.isRefreshing = false;
+};
 
 const authSlice = createSlice({
   name: 'authReducer',
@@ -31,7 +32,7 @@ const authSlice = createSlice({
         state.token = action.payload.token;
       })
       .addCase(fetchRegister.rejected, handleRejected)
-      //Регистрация
+      //Логин
       .addCase(fetchLogin.pending, handlePending)
       .addCase(fetchLogin.fulfilled, (state, action) => {
         state.isLoggedIn = true;
@@ -49,7 +50,9 @@ const authSlice = createSlice({
       })
       .addCase(fetchLogOut.rejected, handleRejected)
       //Refresh
-      .addCase(fetchCurrentUser.pending, (state)=> {state.isRefreshing = true})
+      .addCase(fetchCurrentUser.pending, state => {
+        state.isRefreshing = true;
+      })
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         state.isLoggedIn = true;
         state.user = action.payload;
