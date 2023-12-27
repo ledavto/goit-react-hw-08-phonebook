@@ -10,7 +10,7 @@ export const fetchRegister = createAsyncThunk(
     try {
       const response = await axios.post('/users/signup', credentials);
       // token(set(response.data.token))
-      console.log('REG POST', response.data.token);
+      // console.log('REG POST', response.data.token);
       axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
       return response.data;
     } catch (error) {
@@ -24,7 +24,7 @@ export const fetchLogin = createAsyncThunk('auth/login', async credentials => {
   try {
     const response = await axios.post('/users/login', credentials);
     // token(set(response.data.token))
-    console.log('LOGIN POST', response.data.token);
+    // console.log('LOGIN POST', response.data.token);
     axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
     return response.data;
   } catch (error) {
@@ -46,7 +46,7 @@ export const fetchLogOut = createAsyncThunk(
   }
 );
 
-//Обновление
+//Обновление страницы
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
@@ -54,12 +54,14 @@ export const fetchCurrentUser = createAsyncThunk(
 
     //проверяем есть ли TOKEN в локалсторедже
     if (state.auth.token === null) {
+      console.log(state);
       return thunkAPI.rejectWithValue('Error refresh token');
     }
 
     try {
       axios.defaults.headers.common.Authorization = `Bearer ${state.auth.token}`;
       const response = await axios.get('/users/current');
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

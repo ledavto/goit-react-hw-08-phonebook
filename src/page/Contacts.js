@@ -6,7 +6,7 @@ import { selectError, selectLoading } from '../redux/user/selectors';
 
 export default function ContactPage() {
   //   const isLoading = useSelector(state => state.contacts.isLoading);
-  //   const error = useSelector(selectError);
+  //const error = useSelector(selectError);
 
   return (
     <>

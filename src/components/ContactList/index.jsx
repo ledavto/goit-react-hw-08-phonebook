@@ -14,8 +14,7 @@ export const ContactList = () => {
   // Викликаємо операцію
   useEffect(() => {
     dispatch(fetchContacts());
-    !isLoggedIn && navigate('/');
-  }, [isLoggedIn, navigate, dispatch]);
+  }, [dispatch]);
 
   const filter = useSelector(state => {
     return state.filter.filter;

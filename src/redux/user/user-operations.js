@@ -7,7 +7,7 @@ export const fetchContacts = createAsyncThunk(
     try {
       const response = await axios.get('/contacts');
       // axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
-      console.log('GET', response);
+      // console.log('GET', response);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -21,7 +21,7 @@ export const addContact = createAsyncThunk(
     try {
       const response = await axios.post('/contacts', newContObj);
       // axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
-      console.log('POST', response.data.token);
+      // console.log('POST', response.data.token);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
