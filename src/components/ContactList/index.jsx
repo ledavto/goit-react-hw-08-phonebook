@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, fetchContacts } from '../../redux/user/user-operations';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
 
   // Отримуємо частини стану
   const items = useSelector(state => state.user.contacts.items);
-  const navigate = useNavigate();
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  // const navigate = useNavigate();
+  // const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   // Викликаємо операцію
   useEffect(() => {

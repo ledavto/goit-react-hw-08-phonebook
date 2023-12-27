@@ -1,18 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, fetchContacts } from '../../redux/user/user-operations';
-import { useEffect } from 'react';
+import { addContact } from '../../redux/user/user-operations';
+// import { useEffect } from 'react';
 // import { addUserAction } from '../../redux/user/userSlice';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
 
   const listCont = useSelector(state => state.user.contacts.items);
-
-  // Викликаємо операцію
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  //   console.log('1 step');
-  // }, [dispatch]);
 
   const handleSubmit = e => {
     e.preventDefault();
