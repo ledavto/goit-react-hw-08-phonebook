@@ -18,7 +18,7 @@ import { filterReducer } from './filter/filterSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whiteList: ['token'],
+  whitelist: ['token'],
 };
 
 // export const store = configureStore({
@@ -28,10 +28,7 @@ const authPersistConfig = {
 const persistedReducer = persistReducer(authPersistConfig, authReducer);
 
 export const store = configureStore({
-  reducer: {user: userReducer,
-  filter: filterReducer,
-  auth: persistedReducer
-},
+  reducer: { user: userReducer, filter: filterReducer, auth: persistedReducer },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
